@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Input, Button, GlassCard } from '../ui'
+import { Input, Button, GlassCard, DatePicker } from '../ui'
 
 /**
  * Login Form Component
@@ -14,7 +14,8 @@ const LoginForm = ({
 }) => {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
+    birthday: null
   })
   const [errors, setErrors] = useState({})
 
@@ -45,10 +46,10 @@ const LoginForm = ({
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value, type } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'date' ? value : value
     }))
     
     // Clear error when user starts typing
@@ -92,6 +93,14 @@ const LoginForm = ({
           onChange={handleChange}
           error={errors.password}
           required
+        />
+
+        <DatePicker
+          name="birthday"
+          placeholder="Select your birthday"
+          value={formData.birthday}
+          onChange={handleChange}
+          error={errors.birthday}
         />
 
         {/* Additional Options */}

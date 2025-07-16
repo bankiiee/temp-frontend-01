@@ -7,6 +7,7 @@ export { default as Button } from './ui/Button'
 export { default as GlassCard } from './ui/GlassCard'
 export { default as Input } from './ui/Input'
 export { default as Logo } from './ui/Logo'
+export { default as DatePicker } from './ui/DatePicker'
 
 // Section Components
 export { default as HeroSection } from './sections/HeroSection'
