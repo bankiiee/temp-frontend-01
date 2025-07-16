@@ -2,25 +2,47 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 function Home() {
-  const [greeting, setGreeting] = useState('Hello World')
+  const [currentFeature, setCurrentFeature] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
-  const greetings = [
-    'Hello World! 🌍',
-    'Welcome to React! ⚛️',
-    'Greetings, Developer! 👨‍💻',
-    'Beautiful Day! ☀️',
-    'Keep Coding! 💻',
-    'Amazing Work! ✨',
-    'Stay Creative! 🎨',
-    'Hello Universe! 🌌'
+  const features = [
+    {
+      title: 'Smart Inventory Management',
+      subtitle: 'Real-time stock tracking across all locations',
+      icon: '📦',
+      description: 'Monitor inventory levels, automate reorders, and track products with precision'
+    },
+    {
+      title: 'Logistics Optimization',
+      subtitle: 'AI-powered route planning and delivery tracking',
+      icon: '🚚',
+      description: 'Optimize delivery routes, reduce costs, and improve customer satisfaction'
+    },
+    {
+      title: 'Warehouse Management',
+      subtitle: 'Streamlined pick, pack, and ship operations',
+      icon: '🏭',
+      description: 'Increase efficiency with barcode scanning and automated workflows'
+    },
+    {
+      title: 'Business Analytics',
+      subtitle: 'Insights that drive smarter decisions',
+      icon: '📊',
+      description: 'Track KPIs, forecast demand, and optimize your operations'
+    }
   ]
 
-  const generateGreeting = () => {
+  const stats = [
+    { number: '70%', label: 'Cost Reduction vs Traditional ERP' },
+    { number: '60%', label: 'Faster Order Processing' },
+    { number: '99%', label: 'Inventory Accuracy' },
+    { number: '24hrs', label: 'Setup Time' }
+  ]
+
+  const nextFeature = () => {
     setIsAnimating(true)
     setTimeout(() => {
-      const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)]
-      setGreeting(randomGreeting)
+      setCurrentFeature((prev) => (prev + 1) % features.length)
       setIsAnimating(false)
     }, 300)
   }
@@ -50,82 +72,150 @@ function Home() {
 
       {/* Navigation with Glass Effect */}
       <nav className="relative z-20 p-6">
-        <div className="flex justify-end">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-web-green-500 to-web-green-600 rounded-xl flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg">SF</span>
+            </div>
+            <div>
+              <h1 className="text-web-green-900 font-bold text-xl">StockFlow Pro</h1>
+              <p className="text-web-green-600 text-xs">ERP for SMEs</p>
+            </div>
+          </div>
+          
+          {/* Navigation Links */}
           <div className="relative">
-            {/* Glass Background for Navigation */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/30 to-web-green-100/20 backdrop-blur-xl rounded-2xl border border-white/30 shadow-lg"></div>
-            <Link 
-              to="/login"
-              className="relative z-10 px-6 py-3 inline-flex items-center text-web-green-800 font-medium hover:text-web-green-900 transition-all duration-200 hover:scale-105"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-              </svg>
-              Login
-            </Link>
+            <div className="relative z-10 flex items-center space-x-6 px-6 py-3">
+              <Link to="#features" className="text-web-green-700 hover:text-web-green-900 font-medium transition-colors duration-200">
+                Features
+              </Link>
+              <Link to="#pricing" className="text-web-green-700 hover:text-web-green-900 font-medium transition-colors duration-200">
+                Pricing
+              </Link>
+              <Link 
+                to="/login"
+                className="px-4 py-2 bg-gradient-to-r from-web-green-600 to-web-green-700 hover:from-web-green-700 hover:to-web-green-800 text-white font-medium rounded-lg transition-all duration-200 hover:scale-105"
+              >
+                Sign In
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-8 pt-0">
-        <div className="text-center">
-          {/* Main Greeting Card with Enhanced Glass Effect */}
-          <div className="relative">
+      {/* Hero Section */}
+      <div className="relative z-10 flex items-center justify-center px-8 pt-20 pb-32">
+        <div className="text-center max-w-6xl mx-auto">
+          {/* Hero Card with Enhanced Glass Effect */}
+          <div className="relative mb-16">
             {/* Glass Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/30 to-web-green-100/20 backdrop-blur-2xl rounded-3xl border border-white/30 shadow-2xl"></div>
             
             {/* Glass Reflection Effect */}
             <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent rounded-t-3xl"></div>
             
-            {/* Subtle Inner Glow */}
-            <div className="absolute inset-1 bg-gradient-to-br from-white/10 to-transparent rounded-3xl"></div>
-            
-            {/* Card Content */}
-            <div className="relative z-10 p-12 max-w-2xl mx-auto">
+            {/* Hero Content */}
+            <div className="relative z-10 p-12">
               <div className="space-y-8">
-                {/* Hello World Display */}
-                <div className="space-y-4">
-                  <h1 className={`text-6xl md:text-7xl font-bold text-web-green-900 transition-all duration-300 ${
-                    isAnimating ? 'scale-110 opacity-50' : 'scale-100 opacity-100'
-                  }`}>
-                    {greeting}
+                {/* Main Headline */}
+                <div className="space-y-6">
+                  <h1 className="text-5xl md:text-7xl font-bold text-web-green-900 leading-tight">
+                    ERP Made Simple for
+                    <span className="block bg-gradient-to-r from-web-green-600 to-web-green-700 bg-clip-text text-transparent">
+                      Growing SMEs
+                    </span>
                   </h1>
-                  <div className="h-1 w-32 bg-gradient-to-r from-web-green-400 to-web-green-600 rounded-full mx-auto shadow-lg"></div>
+                  <p className="text-xl md:text-2xl text-web-green-700 max-w-4xl mx-auto leading-relaxed">
+                    Streamline your stock management, logistics, and operations with our powerful yet affordable ERP solution. 
+                    Built specifically for small and medium enterprises.
+                  </p>
                 </div>
 
-                {/* Generate Button */}
-                <div className="flex flex-col items-center space-y-6">
-                  <button
-                    onClick={generateGreeting}
-                    disabled={isAnimating}
-                    className="group relative px-8 py-4 bg-gradient-to-r from-web-green-600 to-web-green-700 hover:from-web-green-700 hover:to-web-green-800 text-white font-bold text-xl rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <span className="relative z-10">
-                      {isAnimating ? 'Generating...' : 'Generate Greeting'}
+                {/* CTA Buttons */}
+                <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
+                  <button className="group relative px-8 py-4 bg-gradient-to-r from-web-green-600 to-web-green-700 hover:from-web-green-700 hover:to-web-green-800 text-white font-bold text-xl rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl">
+                    <span className="relative z-10 flex items-center">
+                      Start Free Trial
+                      <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-web-green-400 to-web-green-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-200"></div>
                   </button>
-
-                  {/* Decorative Elements */}
-                  <div className="flex space-x-4">
-                    <div className="w-4 h-4 bg-web-green-400 rounded-full animate-bounce"></div>
-                    <div className="w-4 h-4 bg-web-green-500 rounded-full animate-bounce animation-delay-200"></div>
-                    <div className="w-4 h-4 bg-web-green-600 rounded-full animate-bounce animation-delay-400"></div>
-                  </div>
+                  
+                  <button className="group relative px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-web-green-600 text-web-green-800 font-bold text-xl rounded-full hover:bg-white/30 transition-all duration-200 hover:scale-105">
+                    <span className="flex items-center">
+                      Watch Demo
+                      <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M19 10a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </span>
+                  </button>
                 </div>
-
-                {/* Info Text */}
-                <p className="text-web-green-700 text-lg">
-                  Click the button to generate a new greeting message!
-                </p>
               </div>
             </div>
           </div>
 
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            {stats.map((stat, index) => (
+              <div key={index} className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/30 to-web-green-100/20 backdrop-blur-sm rounded-2xl border border-white/30 shadow-sm"></div>
+                <div className="relative z-10 p-6 text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-web-green-900 mb-2">{stat.number}</div>
+                  <div className="text-sm md:text-base text-web-green-700 font-medium">{stat.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Feature Showcase */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/30 to-web-green-100/20 backdrop-blur-2xl rounded-3xl border border-white/30 shadow-xl"></div>
+            <div className="relative z-10 p-8">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-web-green-900 mb-4">Powerful Features</h2>
+                <p className="text-web-green-700 text-lg">Everything you need to manage your business operations</p>
+              </div>
+              
+              <div className="space-y-6">
+                <div className={`transition-all duration-500 ${isAnimating ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">{features[currentFeature].icon}</div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-web-green-900 mb-2">
+                      {features[currentFeature].title}
+                    </h3>
+                    <p className="text-web-green-600 text-lg font-medium mb-3">
+                      {features[currentFeature].subtitle}
+                    </p>
+                    <p className="text-web-green-700 max-w-2xl mx-auto">
+                      {features[currentFeature].description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex justify-center">
+                  <button
+                    onClick={nextFeature}
+                    className="px-6 py-3 bg-gradient-to-r from-web-green-600 to-web-green-700 hover:from-web-green-700 hover:to-web-green-800 text-white font-semibold rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105"
+                  >
+                    Next Feature
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <footer className="relative z-10 mt-16 px-8 pb-8">
+        <div className="max-w-6xl mx-auto">
           {/* Tech Stack Pills with Glass Effect */}
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            {['React ⚛️', 'Vite ⚡', 'Tailwind 🎨', 'React Router 🧭'].map((tech, index) => (
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            {['Cloud-Native ☁️', 'AI-Powered 🤖', 'Mobile-First 📱', 'API-Ready 🔗'].map((tech, index) => (
               <div key={tech} className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/30 to-web-green-100/20 backdrop-blur-sm rounded-full border border-white/30 shadow-sm"></div>
                 <span className="relative z-10 px-4 py-2 inline-block text-web-green-800 font-medium">
@@ -135,14 +225,17 @@ function Home() {
             ))}
           </div>
 
-          {/* Additional Decorative Elements */}
-          <div className="mt-8 flex justify-center space-x-4">
-            <div className="w-3 h-3 bg-web-green-400 rounded-full animate-bounce"></div>
-            <div className="w-3 h-3 bg-web-green-500 rounded-full animate-bounce animation-delay-200"></div>
-            <div className="w-3 h-3 bg-web-green-600 rounded-full animate-bounce animation-delay-400"></div>
+          {/* Trusted By Section */}
+          <div className="text-center">
+            <p className="text-web-green-700 font-medium mb-4">Trusted by 2,000+ SMEs worldwide</p>
+            <div className="flex justify-center space-x-4">
+              <div className="w-3 h-3 bg-web-green-400 rounded-full animate-bounce"></div>
+              <div className="w-3 h-3 bg-web-green-500 rounded-full animate-bounce animation-delay-200"></div>
+              <div className="w-3 h-3 bg-web-green-600 rounded-full animate-bounce animation-delay-400"></div>
+            </div>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   )
 }
