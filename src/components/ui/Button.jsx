@@ -12,6 +12,7 @@ const Button = ({
   loading = false,
   onClick,
   className = '',
+  as = 'button',
   ...props 
 }) => {
   const baseClasses = 'group relative font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-web-green-400 focus:ring-opacity-50'
@@ -30,8 +31,10 @@ const Button = ({
   
   const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed transform-none' : 'hover:scale-105'
   
+  const Component = as
+  
   return (
-    <button
+    <Component
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${disabledClasses} ${className}`}
       disabled={disabled || loading}
       onClick={onClick}
@@ -51,7 +54,7 @@ const Button = ({
       {variant === 'primary' && !disabled && (
         <div className="absolute inset-0 bg-gradient-to-r from-web-green-400 to-web-green-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-200"></div>
       )}
-    </button>
+    </Component>
   )
 }
 
@@ -62,7 +65,8 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   onClick: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
+  as: PropTypes.elementType
 }
 
 export default Button
