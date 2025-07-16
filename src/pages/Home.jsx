@@ -22,43 +22,41 @@ function Home() {
 
   return (
     <LiquidGlassBackground>
-      <div className="min-h-screen">
-        {/* Navigation */}
-        <Navigation />
+      {/* Navigation */}
+      <Navigation />
 
-        {/* Hero Section */}
-        <HeroSection
-          title="ERP Made Simple for Growing SMEs"
-          subtitle="StockFlow Pro"
-          description="Transform your business operations with our intuitive ERP solution. Manage inventory, optimize logistics, and boost efficiency in one powerful platform designed specifically for small and medium enterprises."
-          primaryAction={{
-            label: "Get Started Free",
-            onClick: handleGetStarted
-          }}
-          secondaryAction={{
-            label: "Watch Demo",
-            onClick: handleWatchDemo
-          }}
-          stats={[
-            { value: "70%", label: "Cost Reduction vs Traditional ERP" },
-            { value: "60%", label: "Faster Order Processing" },
-            { value: "99%", label: "Inventory Accuracy" }
-          ]}
-        />
+      {/* Hero Section */}
+      <HeroSection
+        title="ERP Made Simple for Growing SMEs"
+        subtitle="StockFlow Pro"
+        description="Transform your business operations with our intuitive ERP solution. Manage inventory, optimize logistics, and boost efficiency in one powerful platform designed specifically for small and medium enterprises."
+        primaryAction={{
+          label: "Get Started Free",
+          onClick: handleGetStarted
+        }}
+        secondaryAction={{
+          label: "Watch Demo",
+          onClick: handleWatchDemo
+        }}
+        stats={[
+          { value: "70%", label: "Cost Reduction vs Traditional ERP" },
+          { value: "60%", label: "Faster Order Processing" },
+          { value: "99%", label: "Inventory Accuracy" }
+        ]}
+      />
 
-        {/* Features Section */}
-        <FeaturesCarousel features={FEATURES} />
+      {/* Features Section */}
+      <FeaturesCarousel features={FEATURES} />
 
-        {/* Stats Section */}
-        <StatsSection 
-          title="Trusted by Growing Businesses"
-          subtitle="Join thousands of SMEs already transforming their operations"
-          stats={STATS}
-        />
+      {/* Stats Section */}
+      <StatsSection 
+        title="Trusted by Growing Businesses"
+        subtitle="Join thousands of SMEs already transforming their operations"
+        stats={STATS}
+      />
 
-        {/* Footer */}
-        <Footer />
-      </div>
+      {/* Footer */}
+      <Footer />
     </LiquidGlassBackground>
   )
 }

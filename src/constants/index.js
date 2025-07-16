@@ -11,30 +11,66 @@ export const FEATURES = [
   {
     id: 'inventory',
     title: 'Smart Inventory Management',
-    subtitle: 'Real-time stock tracking across all locations',
+    description: 'Monitor inventory levels, automate reorders, and track products with precision across all locations',
     icon: '📦',
-    description: 'Monitor inventory levels, automate reorders, and track products with precision'
+    benefits: [
+      'Real-time stock tracking',
+      'Automated reorder points',
+      'Multi-location support',
+      'Barcode integration'
+    ],
+    metric: {
+      value: '99%',
+      label: 'Inventory Accuracy'
+    }
   },
   {
     id: 'logistics',
     title: 'Logistics Optimization',
-    subtitle: 'AI-powered route planning and delivery tracking',
+    description: 'Optimize delivery routes, reduce costs, and improve customer satisfaction with AI-powered planning',
     icon: '🚚',
-    description: 'Optimize delivery routes, reduce costs, and improve customer satisfaction'
+    benefits: [
+      'AI-powered route planning',
+      'Real-time delivery tracking',
+      'Cost optimization',
+      'Customer notifications'
+    ],
+    metric: {
+      value: '35%',
+      label: 'Cost Reduction'
+    }
   },
   {
     id: 'warehouse',
     title: 'Warehouse Management',
-    subtitle: 'Streamlined pick, pack, and ship operations',
+    description: 'Increase efficiency with streamlined pick, pack, and ship operations using automated workflows',
     icon: '🏭',
-    description: 'Increase efficiency with barcode scanning and automated workflows'
+    benefits: [
+      'Barcode scanning',
+      'Pick list optimization',
+      'Automated workflows',
+      'Quality control'
+    ],
+    metric: {
+      value: '60%',
+      label: 'Faster Processing'
+    }
   },
   {
     id: 'analytics',
     title: 'Business Analytics',
-    subtitle: 'Insights that drive smarter decisions',
+    description: 'Track KPIs, forecast demand, and optimize your operations with powerful business insights',
     icon: '📊',
-    description: 'Track KPIs, forecast demand, and optimize your operations'
+    benefits: [
+      'Real-time dashboards',
+      'Demand forecasting',
+      'Performance KPIs',
+      'Custom reports'
+    ],
+    metric: {
+      value: '40%',
+      label: 'Better Decisions'
+    }
   }
 ]
 
@@ -42,23 +78,31 @@ export const FEATURES = [
 export const STATS = [
   { 
     id: 'cost_reduction',
-    number: '70%', 
-    label: 'Cost Reduction vs Traditional ERP' 
+    value: '70%', 
+    label: 'Cost Reduction vs Traditional ERP',
+    description: 'Compared to traditional ERP solutions',
+    icon: '💰'
   },
   { 
     id: 'processing_speed',
-    number: '60%', 
-    label: 'Faster Order Processing' 
+    value: '60%', 
+    label: 'Faster Order Processing',
+    description: 'Streamlined workflows and automation',
+    icon: '⚡'
   },
   { 
     id: 'accuracy',
-    number: '99%', 
-    label: 'Inventory Accuracy' 
+    value: '99%', 
+    label: 'Inventory Accuracy',
+    description: 'Real-time tracking and validation',
+    icon: '🎯'
   },
   { 
     id: 'setup_time',
-    number: '24hrs', 
-    label: 'Setup Time' 
+    value: '24hrs', 
+    label: 'Setup Time',
+    description: 'Quick deployment and onboarding',
+    icon: '🚀'
   }
 ]
 

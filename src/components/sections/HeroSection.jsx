@@ -16,17 +16,17 @@ const HeroSection = ({
   return (
     <section className="relative z-10 text-center max-w-5xl mx-auto px-6 py-16">
       {/* Main Heading */}
-      <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-gradient-to-r from-web-green-700 via-web-green-500 to-web-green-900 bg-clip-text mb-6 leading-tight">
+      <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
         {title}
       </h1>
       
       {/* Subtitle */}
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
+      <h2 className="text-2xl md:text-3xl font-semibold text-web-green-800 mb-8">
         {subtitle}
       </h2>
       
       {/* Description */}
-      <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+      <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed">
         {description}
       </p>
       
